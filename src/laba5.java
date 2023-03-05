@@ -1,36 +1,31 @@
 import java.util.Scanner;
+
 public class laba5 {
-    public static void main (String[] args) {
-        Scanner in = new Scanner (System.in );
-        int[] mass = new int[in.nextInt()];
-        for (int i = 0; i < mass.length; i++) {
-            mass[i] = in.nextInt();
-        }
-        vuv (mass);
-        alg (mass);
-        System.out.println();
-        vuv(mass);
-    }
-
-    static void vuv(int[] mass) {
-        for (int i = 0; i < mass.length; i++) {
-            System.out.print(mass[i] + " ");
-        }
-    }
-
-    static void alg(int[] array) {
-        for (int i = 0; i < array.length; i++) {
-            int min = array[i];
-            int minId = i;
-            for (int j = i+1; j < array.length; j++) {
-                if (array [j] < min) {
-                    min = array [j];
-                    minId = j;
+    public static void bubbleSort(int[] sortArr) {
+        for (int i = 0; i < sortArr.length - 1; i++) {
+            for (int j = 0; j < sortArr.length - i - 1; j++) {
+                if (sortArr[j + 1] < sortArr[j]) {
+                    int swap = sortArr[j];
+                    sortArr[j] = sortArr[j + 1];
+                    sortArr[j + 1] = swap;
                 }
             }
-            int temp = array[i];
-            array [i] = min;
-            array[minId] = temp;
+        }
+    }
+
+    public static void main(String args[]) {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Введите количество значений в массиве: ");
+        int mas = in.nextInt();
+        int num[] = new int[mas];
+        System.out.println("Введите значения массива: ");
+        for (int i = 0; i < mas; i++) {
+            num[i] = in.nextInt();
+        }
+        bubbleSort(num);
+        System.out.println("Отсортированный массив: ");
+        for (int i = 0; i < mas; i++) {
+            System.out.println(num[i] + "");
         }
     }
 }
